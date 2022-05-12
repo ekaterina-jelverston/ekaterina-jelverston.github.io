@@ -1,0 +1,15 @@
+.footer {
+  padding-block: 0.5rem;
+}
+
+  .footer__inner {}
+
+  .footer__inner::before {
+    content: '';
+    display: block;
+    padding-top: 10%;
+  }
+
+  .footer__copy {
+    font-size: 0.65em;
+  }

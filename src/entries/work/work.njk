@@ -1,0 +1,10 @@
+{% from 'components/work-card/work-card.njk' import workCard %}
+
+<div class="work-detail-card | work-page">
+  <div class="work-detail-card__media">
+    {{ workCard(class = 'work-detail-card__content', work = work) }}
+  </div>
+  <div class="work-detail-card__description">
+    {{ work.data.caption }}
+  </div>
+</div>

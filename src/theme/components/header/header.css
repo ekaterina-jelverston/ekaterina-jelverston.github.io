@@ -1,0 +1,24 @@
+.header {}
+
+  .header__inner {
+    padding-block: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header__logo {
+    margin-left: auto;
+    flex-grow: 0.5;
+    display: flex;
+  }
+
+  .header__links {
+    flex-grow: 0.5;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+  }

@@ -1,0 +1,78 @@
+{% macro baseCard(work, class) %}
+  {% if work.media_type === 'IMAGE' %}
+    {{ imageCard(work = work, class = class) }}
+  {% elif work.media_type === 'VIDEO' %}
+    {{ videoCard(work = work, class = class) }}
+  {% endif %}
+{% endmacro %}
+
+{% macro imageCard(work, class) %}
+  <img
+    class="media {{ class if class }}"
+    src="{{ work.mediaURL | url }}"
+    srcset="{{ work.srcSet }}"
+    sizes="
+      (min-width: 1440px) 432px,
+      (min-width: 895px) calc(100vw / 3 - 2 * 30 / 16 * 1rem - 2 * 1rem),
+      (min-width: 601px) calc(100vw / 2 - 2 * 30 / 16 * 1rem - 2 * 1rem),
+      calc(100vw - 2 * 1rem)
+    "
+    alt="{{ work.caption }}"
+  />
+{% endmacro %}
+
+{% macro videoCard(work, class) %}
+  <video
+    class="media {{ class if class }}"
+    src="{{ work.mediaURL | url }}"
+    muted
+  ></video>
+{% endmacro %}
+
+{% set carouselIcon %}
+<svg viewBox="0 0 48 48" height="22" width="22" fill="currentColor" >
+  <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z"></path>
+</svg>
+{% endset %}
+
+{% set videoIcon %}
+<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+  <path d="M5.888 22.5a3.46 3.46 0 01-1.721-.46l-.003-.002a3.451 3.451 0 01-1.72-2.982V4.943a3.445 3.445 0 015.163-2.987l12.226 7.059a3.444 3.444 0 01-.001 5.967l-12.22 7.056a3.462 3.462 0 01-1.724.462z"></path>
+</svg>
+{% endset %}
+
+{% set icons = {
+  'VIDEO': videoIcon,
+  'CAROUSEL_ALBUM': carouselIcon,
+  'IMAGE': ''
+}%}
+
+{% macro previewCard(work) %}
+  {% set workData = work.data %}
+  {% set mediaType = workData.media_type %}
+  {% set contentClass = 'preview-work-card__content' %}
+
+  <article class="preview-work-card">
+    {% if mediaType === 'IMAGE' or mediaType === 'VIDEO' %}
+      {{ baseCard(work = workData, class=contentClass) }}
+    {% elif mediaType === 'CAROUSEL_ALBUM' %}
+      {% set publication = workData.publication.data %}
+      {{ baseCard(work = publication, class=contentClass) }}
+    {% endif %}
+
+    <div class="preview-work-card__type">
+      {{ icons[mediaType] | safe }}
+    </div>
+
+    <a class="preview-work-card__link" href="{{ workData.selfURL | url }}">
+      <span class="visually-hidden">
+        Перейти к работе
+      </span>
+      <svg class="preview-work-card__icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+        <circle cx="12" cy="12" r="3"></circle>
+      </svg>
+    </a>
+
+  </article>
+{% endmacro %}

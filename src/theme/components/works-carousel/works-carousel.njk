@@ -1,0 +1,41 @@
+{% from 'components/work-card/base-card.njk' import baseCard %}
+
+{% macro carouselCard(work, class) %}
+  <div class="works-carousel {{ class if class }}" style="--slides-length: {{ work.publications.length }}">
+    <ul class="works-carousel__list" tabindex="0">
+      {% for item in work.publications %}
+        <li class="works-carousel__item">
+          {{ baseCard(work = item.data) }}
+        </li>
+      {% endfor %}
+    </ul>
+
+    <ul class="works-carousel__dots">
+      {% for item in work.publications %}
+        <li class="works-carousel__dots-item">
+          <button
+            class="works-carousel__dots-button"
+            type="button"
+            value="{{ loop.index0 }}"
+            style="--index: {{ loop.index0 }}"
+          ></button>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <div class="works-carousel__controls">
+      <button class="works-carousel__button works-carousel__button_type_prev">
+        <span class="visually-hidden">Предыдущий слайд</span>
+        <svg class="works-carousel__button-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <button class="works-carousel__button works-carousel__button_type_next">
+        <span class="visually-hidden">Следующий слайд</span>
+        <svg class="works-carousel__button-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+  </div>
+{% endmacro %}

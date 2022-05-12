@@ -1,0 +1,39 @@
+name: Get Media
+
+on: workflow_dispatch
+
+jobs:
+  get-media:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Скачивание репозитория
+        uses: actions/checkout@v3
+
+      - name: Установка Node.js
+        uses: actions/setup-node@v3.1.1
+        with:
+          node-version: '16'
+
+      - name: Установка зависимостей
+        run: npm ci
+
+      - name: Получение данных
+        run: npm run get-media
+        env:
+          NODE_ENV: production
+          FIREBASE_CREDENTIAL: ${{ secrets.FIREBASE_CREDENTIAL }}
+
+      - name: Сохранение данных в репозиторий
+        run: |
+          if [[ -z $(git status -s) ]]
+          then
+            echo $(git status)
+          else
+            git config user.name "GitHub Actions Bot"
+            git config user.email "<>"
+            git add "."
+            git commit -m "Сохранение данных"
+            git pull --rebase
+            git push origin main
+            exit
+          fi

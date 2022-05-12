@@ -1,0 +1,39 @@
+name: Build and Deploy
+
+on:
+    push:
+      branches:
+        - main
+    workflow_run:
+      workflows:
+        - "Get Media"
+      branches:
+        - main
+      types:
+        - completed
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3.1.1
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          NODE_ENV: production
+          PATH_PREFIX: ${{ secrets.PATH_PREFIX }}
+          FIREBASE_CREDENTIAL: ${{ secrets.FIREBASE_CREDENTIAL }}
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: gh-pages
+          folder: dist

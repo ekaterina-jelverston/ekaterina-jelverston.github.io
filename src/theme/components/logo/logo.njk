@@ -1,0 +1,17 @@
+{% macro logo() %}
+<a class="logo" href="{{'/' | url }}">
+  <img class="logo__image" width="46" height="46" src="{{ '/logo.jpg' | url }}" alt="" >
+  <div class="logo__main">
+    <span class="logo__row">
+      {% for letter in 'Ekaterina' | list %}
+        <span>{{ letter }}</span>
+      {% endfor %}
+    </span>
+    <span class="logo__row">
+      {% for letter in 'Jelverston' | list %}
+        <span>{{ letter }}</span>
+      {% endfor %}
+    </span>
+  </div>
+</a>
+{% endmacro %}

@@ -1,0 +1,22 @@
+{% from "components/preview-work-card/preview-work-card.njk" import previewCard %}
+
+<section class="intro-block">
+  <h1 class="intro-block__title">
+    {{ meta.title }}
+  </h1>
+  <p class="intro-block__description">
+    {{ meta.description }}
+  </p>
+</section>
+
+<section>
+  <h2 class="visually-hidden">Работы</h2>
+
+  <ul class="works-grid">
+    {% for work in collections.works %}
+      <li class="works-grid__item">
+        {{ previewCard(work = work)}}
+      </li>
+    {% endfor %}
+  </ul>
+</section>

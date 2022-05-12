@@ -1,0 +1,19 @@
+.intro-block {
+  display: grid;
+  gap: 0.5rem;
+  padding-block: 4rem;
+  padding-block: clamp(2rem, 10%, 10rem);
+  text-align: center;
+}
+
+  .intro-block__title {
+    margin: 0;
+    font-size: 2em;
+    line-height: 1.15;
+    font-weight: 500;
+  }
+
+  .intro-block__description {
+    margin: 0;
+    color: hsl(0deg 0% 46%);
+  }

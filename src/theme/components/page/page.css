@@ -1,0 +1,21 @@
+.page {
+  --min-viewport: 400;
+  --max-viewport: 1440;
+  --current: var(--viewport-width, var(--min-viewport));
+  --viewport-ratio: calc((clamp(var(--min-viewport), var(--current), var(--max-viewport)) - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)));
+
+  font-size: calc(90% + var(--viewport-ratio) * 20%);
+  line-height: 1.25;
+  font-family: 'Open Sans', sans-serif;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  color: hsl(0deg 0% 20%);
+  background-color: hsl(0deg 0% 96%);
+}
+
+  .page__body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }

@@ -1,0 +1,12 @@
+{% from './base-card.njk' import baseCard %}
+{% from 'components/works-carousel/works-carousel.njk' import carouselCard %}
+
+{% macro workCard(work, class) %}
+  {% set workData = work.data %}
+
+  {% if workData.media_type === 'IMAGE' or workData.media_type === 'VIDEO' %}
+    {{ baseCard(work = workData, class = class) }}
+  {% elif workData.media_type === 'CAROUSEL_ALBUM' %}
+    {{ carouselCard(work = workData, class = class) }}
+  {% endif %}
+{% endmacro %}

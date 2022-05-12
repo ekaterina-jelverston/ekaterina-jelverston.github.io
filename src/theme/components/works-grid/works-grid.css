@@ -1,0 +1,35 @@
+.works-grid {
+  --column-min-width: 260px;
+  --max-columns: 3;
+  --gap: calc(30 / 16 * 1rem);
+
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: grid;
+  grid-gap: var(--gap);
+  /* -1px для Firefox */
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(
+        min(
+          max(
+            (100% - var(--gap) * (var(--max-columns) - 1)) / var(--max-columns) - 1px,
+            var(--column-min-width)
+          ),
+          100%
+        ),
+        /* clamp(
+          (100% - var(--gap) * (var(--max-columns) - 1)) / var(--max-columns),
+          var(--column-min-width),
+          100%
+        ),*/
+        1fr
+      )
+    );
+}
+
+  .works-grid__item {
+    display: grid;
+  }

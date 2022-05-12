@@ -1,0 +1,10 @@
+{% from 'components/video/video.njk' import video as videoCard %}
+{% from './image-card.njk' import imageCard %}
+
+{% macro baseCard(work, class) %}
+  {% if work.media_type === 'IMAGE' %}
+    {{ imageCard(work = work, class = class) }}
+  {% elif work.media_type === 'VIDEO' %}
+    {{ videoCard(work = work, class = class) }}
+  {% endif %}
+{% endmacro %}

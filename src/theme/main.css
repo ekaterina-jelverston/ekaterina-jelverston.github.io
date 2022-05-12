@@ -1,0 +1,18 @@
+@charset 'utf-8';
+
+@import './components/page/page.css';
+@import './components/header/header.css';
+@import './components/footer/footer.css';
+@import './components/container/container.css';
+@import './components/logo/logo.css';
+@import './components/action-button/action-button.css';
+@import './components/intro-block/intro-block.css';
+@import './components/works-grid/works-grid.css';
+@import './components/visually-hidden/visually-hidden.css';
+@import './components/media/media.css';
+@import './components/works-carousel/works-carousel.css';
+@import './components/work-detail-card/work-detail-card.css';
+@import './components/work-page/work-page.css';
+@import './components/preview-work-card/preview-work-card.css';
+@import './components/video/video.css';
+@import './components/tag/tag.css';

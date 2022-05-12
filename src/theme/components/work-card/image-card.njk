@@ -1,0 +1,8 @@
+{% macro imageCard(work, class) %}
+  <img
+    class="media {{ class if class }}"
+    src="{{ work.mediaURL | url }}"
+    srcset="{{ work.srcSet }}"
+    alt=""
+  />
+{% endmacro %}

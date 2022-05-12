@@ -1,0 +1,5 @@
+.tag {
+  padding-inline: calc(8 / 16 * 1em);
+  background-color: hsl(0deg 0% 90%);
+  border-radius: 2em;
+}

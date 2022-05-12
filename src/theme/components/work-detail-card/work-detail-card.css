@@ -1,0 +1,82 @@
+.work-detail-card {
+}
+
+  .work-detail-card__media {
+    position: relative;
+    overflow: hidden;
+    color: hsl(0deg 0% 100%);
+    background-color: hsl(0deg 0% 0%);
+  }
+
+  .work-detail-card__content {}
+
+  .work-detail-card__description {
+    --line-height: 1.5;
+    box-sizing: border-box;
+    padding: var(--padding);
+    font-size: calc(14 / 16 * 1em);
+    line-height: var(--line-height);
+    background-color: hsl(0deg 0% 100%);
+  }
+
+    .work-detail-card__description p {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+      .work-detail-card__description p + p {
+        margin-top: calc(var(--line-height) * 1em);
+      }
+
+  @media not all and (min-width: 640px) {
+    .work-detail-card {
+      margin-inline: calc(-1 * var(--padding));
+    }
+  }
+
+  @media (min-width: 640px) {
+    .work-detail-card {
+      display: flex;
+      justify-content: center;
+      height: 90vh;
+    }
+
+      .work-detail-card__media {
+        flex: 0 1 auto;
+        /* flex: 1 1 65%; */
+        aspect-ratio: 1 / 1;
+        height: 100%;
+        width: auto;
+        min-width: 0;
+      }
+
+      .work-detail-card__content {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        aspect-ratio: 1 / 1;
+        height: 100%;
+        width: auto;
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+        .work-detail-card__content[data-fit="height"] {
+          width: auto;
+          height: 100%;
+        }
+
+        .work-detail-card__content[data-fit="width"] {
+          width: 100%;
+          height: auto;
+        }
+
+      .work-detail-card__description {
+        /* flex: 1 1 calc(380 / 16 * 1rem); */
+        /* flex: 0 1 35%; */
+        flex: 0 1 50ch;
+        overflow: auto;
+        min-height: 0;
+        min-width: 0;
+      }
+  }

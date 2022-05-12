@@ -1,0 +1,8 @@
+.container {
+  --padding: 1rem;
+  --max-width: 1280;
+  margin-inline: auto;
+  box-sizing: border-box;
+  padding-inline: var(--padding);
+  max-width: calc(var(--max-width) / 16 * 1rem);
+}

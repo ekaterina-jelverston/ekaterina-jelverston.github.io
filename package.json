@@ -1,0 +1,23 @@
+{
+  "name": "ekaterina-jelverston-site",
+  "author": "monochromer <monochromer@mail.ru>",
+  "private": true,
+  "scripts": {
+    "start": "npm run dev",
+    "eleventy:dev": "eleventy --serve --watch --incremental",
+    "eleventy:build": "eleventy",
+    "frontend:dev": "vite",
+    "frontend:build": "vite build",
+    "dev": "NODE_ENV=development npm run frontend:dev & npm run eleventy:dev",
+    "build": "NODE_ENV=production npm run frontend:build && npm run eleventy:build",
+    "get-media": "node src/build-scripts/get-media.js"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.1",
+    "dotenv": "^16.0.0",
+    "firebase-admin": "^10.1.0",
+    "linkedom": "^0.14.9",
+    "sharp": "^0.30.4",
+    "vite": "^2.9.9"
+  }
+}
