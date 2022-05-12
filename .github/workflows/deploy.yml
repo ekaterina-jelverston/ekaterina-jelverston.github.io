@@ -30,6 +30,7 @@ jobs:
         env:
           NODE_ENV: production
           PATH_PREFIX: ${{ secrets.PATH_PREFIX }}
+          FIREBASE_CREDENTIAL: ${{ secrets.FIREBASE_CREDENTIAL }}
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.3.3
