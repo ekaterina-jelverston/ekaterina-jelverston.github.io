@@ -1,7 +1,7 @@
 {% from 'components/work-card/base-card.njk' import baseCard %}
 
 {% macro carouselCard(work, class) %}
-  <div class="works-carousel {{ class if class }}" style="--slides-length: {{ work.publications.length }}">
+  <div class="works-carousel works-carousel_fallback {{ class if class }}" style="--slides-length: {{ work.publications.length }}">
     <ul class="works-carousel__list" tabindex="0">
       {% for item in work.publications %}
         <li class="works-carousel__item">

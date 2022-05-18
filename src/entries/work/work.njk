@@ -5,6 +5,11 @@
     {{ workCard(class = 'work-detail-card__content', work = work) }}
   </div>
   <div class="work-detail-card__description">
-    {{ work.data.caption }}
+    <div class="work-detail-card__text">
+      {{ work.data.caption }}
+    </div>
+    <a class="work-detail-card__link" href="{{ work.data.origin_link }}" target="_blank" rel="noopener noreferrer">
+      Посмотреть в Instagram
+    </a>
   </div>
 </div>

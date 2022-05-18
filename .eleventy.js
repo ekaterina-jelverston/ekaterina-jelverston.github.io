@@ -64,7 +64,7 @@ module.exports = (eleventyConfig) => {
     }
 
     const window = parseHTML(content)
-    const descriptnioElement = window.document.querySelector('.work-detail-card__description')
+    const descriptnioElement = window.document.querySelector('.work-detail-card__text')
 
     if (!descriptnioElement) {
       return content

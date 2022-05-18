@@ -48,14 +48,15 @@
 
   .video__mute {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 0.5rem;
+    right: 0.5rem;
     padding: 1rem;
     border-radius: 50%;
     will-change: transform;
   }
 
   .video__mute-icon {
+    transform: translateX(4px);
     display: block;
     pointer-events: none;
   }

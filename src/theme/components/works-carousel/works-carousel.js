@@ -26,13 +26,9 @@
       })
 
       this.list.addEventListener('scroll', (event) => {
-        const offset = 5 // для уменьшения погрешности вычисления
         requestAnimationFrame(() => {
-          // const nearestIndex = Math.floor((this.list.scrollLeft + offset) / this.list.offsetWidth)
-          const nearestIndex = Math.floor((this.list.scrollLeft + offset) / this.list.offsetWidth)
-
-          // const ratio = (this.list.scrollLeft) / (this.list.scrollWidth - this.list.offsetWidth)
-          // const nearestIndex = Math.floor((ratio) * (this.items.length - 1))
+          const ratio = (this.list.scrollLeft + this.list.offsetWidth / 2) / (this.list.scrollWidth - this.list.offsetWidth)
+          const nearestIndex = Math.floor((ratio) * (this.items.length - 1))
 
           this.rootElement.style.setProperty('--active-index', nearestIndex)
         })
@@ -45,6 +41,10 @@
       this.nextButton.addEventListener('click', () => {
         this.list.scrollLeft += this.list.offsetWidth
       })
+
+      this.rootElement.style.setProperty('--scrollbar-size', this.list.offsetHeight - this.list.clientHeight)
+
+      this.rootElement.classList.remove('works-carousel_fallback')
     }
 
     goToSlide(slideIndex) {

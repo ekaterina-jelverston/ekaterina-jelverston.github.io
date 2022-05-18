@@ -4,11 +4,10 @@
 }
 
   .works-carousel__list {
-    --adjustment: 20px;
+    --adjustment: var(--scrollbar-size, 17px);
     margin: 0;
     padding: 0;
-    margin-bottom: calc(-1 * var(--adjustment));
-    padding-bottom: var(--adjustment);
+    margin-bottom: calc(-1px * var(--adjustment));
     list-style-type: none;
     display: flex;
     overflow-x: auto;
@@ -22,6 +21,45 @@
     position: relative;
     overflow: hidden;
     scroll-snap-align: center;
+  }
+
+  .works-carousel__item::before,
+  .works-carousel__item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1rem;
+    background-image: linear-gradient(
+      var(--gradient-position),
+      hsla(0, 0%, 0%, 0) 0%,
+      hsla(0, 0%, 0%, 0.013) 18.7%,
+      hsla(0, 0%, 0%, 0.049) 34.9%,
+      hsla(0, 0%, 0%, 0.104) 48.8%,
+      hsla(0, 0%, 0%, 0.175) 60.6%,
+      hsla(0, 0%, 0%, 0.259) 70.4%,
+      hsla(0, 0%, 0%, 0.352) 78.4%,
+      hsla(0, 0%, 0%, 0.45) 84.8%,
+      hsla(0, 0%, 0%, 0.55) 89.8%,
+      hsla(0, 0%, 0%, 0.648) 93.6%,
+      hsla(0, 0%, 0%, 0.741) 96.3%,
+      hsla(0, 0%, 0%, 0.825) 98.1%,
+      hsla(0, 0%, 0%, 0.896) 99.2%,
+      hsla(0, 0%, 0%, 0.951) 99.8%,
+      hsla(0, 0%, 0%, 0.987) 100%,
+      hsl(0, 0%, 0%) 100%
+    );
+    pointer-events: none;
+  }
+
+  .works-carousel__item::before {
+    --gradient-position: -90deg;
+    left: 0;
+  }
+
+  .works-carousel__item::after {
+    --gradient-position: 90deg;
+    right: 0;
   }
 
   .works-carousel__dots {
@@ -111,4 +149,13 @@
 
     .works-carousel__button:hover {
       background-color: hsl(0deg 0% 0% / 0.4);
+    }
+
+    .works-carousel_fallback .works-carousel__list {
+      --adjustment: 0;
+    }
+
+    .works-carousel_fallback .works-carousel__dots,
+    .works-carousel_fallback .works-carousel__button {
+      visibility: hidden;
     }
