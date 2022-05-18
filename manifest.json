@@ -4,11 +4,11 @@
     "src": "src/theme/styles.js",
     "isEntry": true,
     "css": [
-      "assets/styles.js.9dba2247.css"
+      "assets/styles.js.6cf86405.css"
     ]
   },
   "src/theme/main.js": {
-    "file": "assets/main.js.377a3f71.js",
+    "file": "assets/main.js.31eeb53d.js",
     "src": "src/theme/main.js",
     "isEntry": true
   }
