@@ -46,12 +46,6 @@ module.exports = (eleventyConfig) => {
     console.log(label, ':', value)
   })
 
-  eleventyConfig.addFilter('entry', function (value) {
-    return fileManifset[value]
-      ? `${value}?v=${fileManifset[value]}`
-      : value
-  })
-
   eleventyConfig.addTransform('tag-label-transform', function (content) {
     const context = this
 
