@@ -4,7 +4,7 @@
   --current: var(--viewport-width, var(--min-viewport));
   --viewport-ratio: calc((clamp(var(--min-viewport), var(--current), var(--max-viewport)) - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)));
   --min-font-size: 14;
-  --max-font-size: 20;
+  --max-font-size: 18;
   font-size:
     calc(
       (var(--min-font-size) + var(--viewport-ratio) * (var(--max-font-size) - var(--min-font-size))) / 16 * 1rem
