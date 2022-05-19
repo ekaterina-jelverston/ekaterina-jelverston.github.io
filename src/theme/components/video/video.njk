@@ -1,7 +1,7 @@
 {% macro video(work, class) %}
-  <div class="video">
+  <div class="video {{ class if class }}">
     <video
-      class="video__content media {{ class if class }}"
+      class="video__content media"
       src="{{ work.mediaURL | url }}"
       muted
     ></video>
