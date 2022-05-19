@@ -3,8 +3,12 @@
   --max-viewport: 1440;
   --current: var(--viewport-width, var(--min-viewport));
   --viewport-ratio: calc((clamp(var(--min-viewport), var(--current), var(--max-viewport)) - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)));
-
-  font-size: calc(90% + var(--viewport-ratio) * 20%);
+  --min-font-size: 14;
+  --max-font-size: 20;
+  font-size:
+    calc(
+      (var(--min-font-size) + var(--viewport-ratio) * (var(--max-font-size) - var(--min-font-size))) / 16 * 1rem
+    );
   line-height: 1.25;
   font-family: 'Open Sans', sans-serif;
   text-size-adjust: 100%;

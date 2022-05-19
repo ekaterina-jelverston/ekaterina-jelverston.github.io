@@ -52,7 +52,7 @@
     background-color: #e60023;
   }
 
-  /* @media (max-width: 480px) {
+  /* @media (max-width: calc(480 / 16 * 1em)) {
     .action-button {
       padding: 0.75em;
     }
