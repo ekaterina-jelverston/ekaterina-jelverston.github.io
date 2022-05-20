@@ -27,8 +27,10 @@
 
       this.list.addEventListener('scroll', (event) => {
         requestAnimationFrame(() => {
-          const ratio = (this.list.scrollLeft + this.list.offsetWidth / 2) / (this.list.scrollWidth - this.list.offsetWidth)
-          const nearestIndex = Math.floor((ratio) * (this.items.length - 1))
+          const slideWidth = this.list.offsetWidth
+          const maxAvailableScroll = this.list.scrollWidth - slideWidth
+          const ratio = (this.list.scrollLeft + slideWidth / 2) / maxAvailableScroll
+          const nearestIndex = Math.floor(ratio * (this.items.length - 1))
 
           this.rootElement.style.setProperty('--active-index', nearestIndex)
         })
